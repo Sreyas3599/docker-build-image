@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'node2' }  // Run the pipeline on agent labeled 'node2'
 
     environment {
         IMAGE_NAME = 'sreyas3599/my-image'
@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stage('Checkout Code') {
+            steps {
+                // Will use default SCM checkout since the Jenkinsfile is in the repo
+                checkout scm
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 script {
