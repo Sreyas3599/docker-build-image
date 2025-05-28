@@ -2,18 +2,11 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'yourdockerhubusername/myapp'
+        IMAGE_NAME = 'sreyas3599/my-image'
         TAG = 'latest'
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                // Adjust as per your source control
-                git 'https://github.com/your-repo/your-project.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 script {
